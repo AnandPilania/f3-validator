@@ -1,0 +1,20 @@
+{
+    "name": "anandpilania/f3-validator",
+    "description": "Validator package for FatFreeFramework.",
+	"keywords": ["f3", "fatfree", "fatfreeframework", "anandpilania", "f3-validator"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anand Pilania",
+            "email": "pilaniaanand@gmail.com"
+        }
+    ],
+	"minimum-stability": "stable",
+    "require": {
+      "bcosca/fatfree-core": "^3.6"
+	},
+	"autoload": {
+        "classmap": ["src/"]
+    },
+	"suggest": {}
+}
