@@ -14,6 +14,8 @@ Easy to use Validation package for Fatfree-framework with using F3 built-in tran
 	)->validate();`
 	
 	**NOTE:** You can also pass more data to the `validate` method.
+	**NOTE:** Before using `unique` validator, you must have to define a `GLOBAL` config parameter `TABLE.TABLENAME = NAMESPACED_MODEL_CLASS`:
+	*** `unique:users` => `TABLE.USERS = App\Models\User`
 	
 	* Another method:
 		
@@ -46,5 +48,29 @@ Easy to use Validation package for Fatfree-framework with using F3 built-in tran
  *  `unique` - `unique:tableName`
  *  ...
  
+
+## USING IN MODEL
+- You can also use this validator directly into your model:
+FOR EX: Validatin on `beforesave` trigger: (This example is used with [ikkez/f3-cortex](https://github.com/ikkez/f3-cortex))
+
+`protected $validator;
+public function __construct() {
+	$saveHandler = function() {
+		foreach($this->getFieldConfiguration() as $field => $conf) {
+            if(isset($conf['validate'])) {
+                $rules[$field] = $conf['validate'];
+                $data[$field] = $this->get($field);
+                if(str_contains($conf['validate'], 'confirmed')) {
+            	    $confirmation = $field.'_confirmation';
+                    $data[$field.'_confirmation'] = null !== $this->app->get('POST.'.$confirmation)?$this->app->get('POST.'.$confirmation):$this->app->get('GET.'.$confirmation);
+                }
+            }
+        }
+        $this->validator = Validator::instance()->validate($data, $rules);
+		return $this->validator->passed();
+    };
+	$this->beforesave($saveHandler);
+}`
+
 --
 http://about.me/anandpilania

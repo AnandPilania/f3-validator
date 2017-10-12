@@ -115,8 +115,10 @@ trait ValidationRules {
 	
 	public function validateUnique($attribute, $value, $parameters) {
 		$this->requireParameterCount(1, $parameters, 'unique');
-		$filter = $model->dry() ? array($attribute.' = ?', $parameters) : array($attribute.' = ? and _id != ?', $parameters, $model->_id);
-		return $model->findone($filter);
+        $class = f3()->get('TABLE.'.strtoupper($parameters[0]));
+        $model = new $class;
+		$model->load(array($attribute.' =?', $value));
+        return false !== $model->dry();
 	}
 	
 	public function validateAlpha($attribute, $value) {
