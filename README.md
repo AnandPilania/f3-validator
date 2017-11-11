@@ -15,7 +15,7 @@ Easy to use Validation package for Fatfree-framework with using F3 built-in tran
 	
 	**NOTE:** You can also pass more data to the `validate` method.
 	**NOTE:** Before using `unique` validator, you must have to define a `GLOBAL` config parameter `TABLE.TABLENAME = NAMESPACED_MODEL_CLASS`:
-	*** `unique:users` => `TABLE.USERS = App\Models\User`
+	*** `unique:users` => `MODEL.USERS = App\Models\User`
 	
 	* Another method:
 		

@@ -115,7 +115,7 @@ trait ValidationRules {
 	
 	public function validateUnique($attribute, $value, $parameters) {
 		$this->requireParameterCount(1, $parameters, 'unique');
-        $class = f3()->get('TABLE.'.strtoupper($parameters[0]));
+        $class = f3()->get('MODEL.'.strtoupper($parameters[0]));
         $model = new $class;
 		$model->load(array($attribute.' =?', $value));
         return false !== $model->dry();
