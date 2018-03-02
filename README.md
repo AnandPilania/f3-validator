@@ -10,18 +10,18 @@ Easy to use Validation package for Fatfree-framework with using F3 built-in tran
 
 	`$validator = new Validator(
 		array('name' => 'Anand Pilania', 'email' => 'abc@def.ge'),
-		array('name' => 'required|min:3|max:60', 'email' => 'required|unique:users|email')
+		array('name' => 'required|min:3|max:60', 'email' => 'required|unique:Models\User|email')
 	)->validate();`
 	
 	**NOTE:** You can also pass more data to the `validate` method.
-	**NOTE:** Before using `unique` validator, you must have to define a `GLOBAL` config parameter `TABLE.TABLENAME = NAMESPACED_MODEL_CLASS`:
-	*** `unique:users` => `MODEL.USERS = App\Models\User`
+	**NOTE:** For `unique` validator, you must passed the `NAMESPACED_MODEL_CLASS`:
+	*** `unique:Models\User` => `Models\User is the Mapper/Cortex Model`
 	
 	* Another method:
 		
 		`$validator = Validator::instance()->validate(
 			array('name' => 'Anand Pilania', 'email' => 'abc@def.ge'),
-			array('name' => 'required|min:3|max:60', 'email' => 'required|unique:users|email')
+			array('name' => 'required|min:3|max:60', 'email' => 'required|unique:Model\User|email')
 		);`
 	
 - 2: Get validation status (return -> true/false):
@@ -45,7 +45,7 @@ Easy to use Validation package for Fatfree-framework with using F3 built-in tran
  
 ### Used with parameters
  *  `min`, `max`, `size`, `between` - `min:6', `max:255`, `size:3`, `between:1,3`
- *  `unique` - `unique:tableName`
+ *  `unique` - `unique:NAMESPACED_MODEL_CLASS`
  *  ...
  
 ## USING IN MODEL
