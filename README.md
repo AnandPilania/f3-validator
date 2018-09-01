@@ -3,6 +3,7 @@
 Easy to use Validation package for Fatfree-framework with using F3 built-in translations. You can also use it directly in the model.
 
 **NOTE:** This package port some classes and ideas from [illuminate/validator](https://github.com/illuminate/validator).
+
 **NOTE:** SAMPLE DICT/LANG FILE IS INCLUDED AS `en.php.sample`, use this for reference.
 
 ## Usage
@@ -11,18 +12,16 @@ Easy to use Validation package for Fatfree-framework with using F3 built-in tran
 
 	`$validator = new Validator(
 		array('name' => 'Anand Pilania', 'email' => 'abc@def.ge'),
-		array('name' => 'required|min:3|max:60', 'email' => 'required|unique:Models\User|email')
+		array('name' => 'required|min:3|max:60', 'email' => 'required|unique:users|email')
 	)->validate();`
 	
 	**NOTE:** You can also pass more data to the `validate` method.
-	**NOTE:** For `unique` validator, you must passed the `NAMESPACED_MODEL_CLASS`:
-	*** `unique:Models\User` => `Models\User is the Mapper/Cortex Model`
 	
 	* Another method:
 		
 		`$validator = Validator::instance()->validate(
 			array('name' => 'Anand Pilania', 'email' => 'abc@def.ge'),
-			array('name' => 'required|min:3|max:60', 'email' => 'required|unique:Model\User|email')
+			array('name' => 'required|min:3|max:60', 'email' => 'required|unique:users|email')
 		);`
 	
 - 2: Get validation status (return -> true/false):
@@ -45,8 +44,8 @@ Easy to use Validation package for Fatfree-framework with using F3 built-in tran
  * `url`, `nullable`, `json`, `required`, `confirmed`, `active_url`, `email`, `ip`, `ipv4`, `ipv6`, `filled`
  
 ### Used with parameters
- *  `min`, `max`, `size`, `between` - `min:6', `max:255`, `size:3`, `between:1,3`
- *  `unique` - `unique:NAMESPACED_MODEL_CLASS`
+ *  `min`, `max`, `size`, `between` - `min:6`, `max:255`, `size:3`, `between:1,3`
+ *  `unique` - `unique:PARAM_NAME_DEFINED_IN_CONFIG` => `MODEL.USERS = Models\User` -> `unique:users`
  *  ...
  
 ## USING IN MODEL
@@ -87,3 +86,5 @@ FOR EX: Validatin on `beforesave` trigger: (This example is used with [ikkez/f3-
 	 }`
 --
 http://about.me/anandpilania
+
+**NOTE:** For `unique` validator, you must define the `MODEL.USERS = NAMESPACES_USERS_MODEL` into the `.ini` config file OR via `$f3->set('MODEL.USERS', 'NAMESPACES_USERS_MODEL');`.
