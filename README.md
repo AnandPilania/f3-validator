@@ -3,6 +3,7 @@
 Easy to use Validation package for Fatfree-framework with using F3 built-in translations. You can also use it directly in the model.
 
 **NOTE:** This package port some classes and ideas from [illuminate/validator](https://github.com/illuminate/validator).
+**NOTE:** SAMPLE DICT/LANG FILE IS INCLUDED AS `en.php.sample`, use this for reference.
 
 ## Usage
 

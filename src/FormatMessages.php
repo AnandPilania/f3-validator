@@ -8,24 +8,25 @@ trait FormatMessage {
             return $inlineMessage;
         }
 		
+		$f3 = Base::instance();
 		$key = "error.validations.{$lowerRule}";
-		$message = f3()->get($key);
+		$message = $f3->get($key);
 		$replace = $this->prepend($parameters, $attribute);
 		
 		if(!is_null($message)) {
 			if(is_array($message)) {
 				$type = $this->getAttributeType($attribute);
 				if(isset($message[$type])) {
-					$message = f3()->get($key.'.'.$type, $replace);
+					$message = $f3->get($key.'.'.$type, $replace);
 				}else{
-					$message = f3()->get('error.validations.required', $replace);
+					$message = $f3->get('error.validations.required', $replace);
 				}
 			}else{
-				$message = f3()->get($key, $replace);
+				$message = $f3->get($key, $replace);
 			}
 		}
 		
-		return f3()->format($message, [$attribute, (isset($parameters[0])?$parameters[0]:'')]);
+		return $f3->format($message, [$attribute, (isset($parameters[0])?$parameters[0]:'')]);
 	}
 	
 	protected function getFromLocalArray($attribute, $lowerRule, $source = null) {

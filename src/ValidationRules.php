@@ -37,7 +37,7 @@ trait ValidationRules {
 	}
 	
 	public function validateEmail($attribute, $value) {
-		return Audit::instance()->email($value);
+		return return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
 	}
 	
 	public function validateMax($attribute, $value, $parameters) {
@@ -115,7 +115,7 @@ trait ValidationRules {
 	
 	public function validateUnique($attribute, $value, $parameters) {
 		$this->requireParameterCount(1, $parameters, 'unique');
-        $class = f3()->get('MODEL.'.strtoupper($parameters[0]));
+        $class = Base::instance()->get('MODEL.'.strtoupper($parameters[0]));
         $model = new $class;
 		$model->load(array($attribute.' =?', $value));
         return false !== $model->dry();

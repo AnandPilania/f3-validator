@@ -47,7 +47,7 @@ class Validator extends Prefab {
 	}
 	
 	public function passed() {
-		return (count($this->messages, COUNT_RECURSIVE) - count($this->messages)) <= 0;
+		return (count($this->messages, COUNT_RECURSIVE) - count($this->messages)) <= 0 && empty($this->messages);
 	}
 	
 	public function failed() {

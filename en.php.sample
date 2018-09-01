@@ -1,0 +1,78 @@
+<?php
+
+return [
+    'error' => [
+        'default' => 'Something went wrong! Please try after sometime!!',
+        'validations' => [
+            'accepted' => 'The {0} must be accepted.',
+            'active_url' => 'The {0} is not a valid URL.',
+            'after' => 'The {0} must be a date after {1}.',
+            'after_or_equal' => 'The {0} must be a date after or equal to {1}.',
+            'alpha' => 'The {0} may only contain letters.',
+            'alpha_dash' => 'The {0} may only contain letters, numbers, and dashes.',
+            'alpha_num' => 'The {0} may only contain letters and numbers.',
+            'array' => 'The {0} must be an array.',
+            'before' => 'The {0} must be a date before {1}.',
+            'before_or_equal' => 'The {0} must be a date before or equal to {1}.',
+            'between' => [
+                'numeric' => 'The {0} must be between {1} and {2}.',
+                'file' => 'The {0} must be between {1} and {2} kilobytes.',
+                'string' => 'The {0} must be between {1} and {2} characters.',
+                'array' => 'The {0} must have between {1} and {2} items.',
+            ],
+            'boolean' => 'The {0} field must be true or false.',
+            'confirmed' => 'The {0} confirmation does not match.',
+            'date' => 'The {0} is not a valid date.',
+            'date_format' => 'The {0} does not match the format {1}.',
+            'digits' => 'The {0} must be :digits digits.',
+            'digits_between' => 'The {0} must be between {1} and {1} digits.',
+            'email' => 'The {0} must be a valid email address.',
+            'exists' => 'The selected {0} is invalid.',
+            'file' => 'The {0} must be a file.',
+            'filled' => 'The {0} field must have a value.',
+            'image' => 'The {0} must be an image.',
+            'in' => 'The selected {0} is invalid.',
+            'in_array' => 'The {0} field does not exist in {1}.',
+            'integer' => 'The {0} must be an integer.',
+            'ip' => 'The {0} must be a valid IP address.',
+            'ipv4' => 'The {0} must be a valid IPv4 address.',
+            'ipv6' => 'The {0} must be a valid IPv6 address.',
+            'json' => 'The {0} must be a valid JSON string.',
+            'max' => [
+                'numeric' => 'The {0} may not be greater than {1}.',
+                'file' => 'The {0} may not be greater than {1} kilobytes.',
+                'string' => 'The {0} may not be greater than {1} characters.',
+                'array' => 'The {0} may not have more than {1} items.',
+            ],
+            'mimes' => 'The {0} must be a file of {1} {2}.',
+            'mimetypes' => 'The {0} must be a file of {1} {2}.',
+            'min' => [
+                'numeric' => 'The {0} must be at least {1}.',
+                'file' => 'The {0} must be at least {1} kilobytes.',
+                'string' => 'The {0} must be at least {1} characters.',
+                'array' => 'The {0} must have at least {1} items.',
+            ],
+            'not_in' => 'The selected {0} is invalid.',
+            'numeric' => 'The {0} must be a number.',
+            'regex' => 'The {0} format is invalid.',
+            'required' => 'The {0} field is required.',
+            'same' => 'The {0} and {1} must match.',
+            'size' => [
+                'numeric' => 'The {0} must be {1}.',
+                'file' => 'The {0} must be {1} kilobytes.',
+                'string' => 'The {0} must be {1} characters.',
+                'array' => 'The {0} must contain {1} items.',
+            ],
+            'string' => 'The {0} must be a string.',
+            'timezone' => 'The {0} must be a valid zone.',
+            'unique' => 'The {0} has already been taken.',
+            'uploaded' => 'The {0} failed to upload.',
+            'url' => 'The {0} format is invalid.',
+        ],
+        'auth' => [
+            'not_registered' => '{0} is not registered with us!',
+            'password' => 'Password is not geniune for {0}',
+            'not_active' => 'This account is not activated! {0} for resend activation link!'
+        ]
+    ]
+];
