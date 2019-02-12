@@ -1,0 +1,28 @@
+abstract class BaseController {
+	protected $f3;
+	public function __construct() {
+		$this->f3 = \Base::instance();
+	}
+	
+	protected function validator(array $data = [], array $rules = []) {
+		$validator = \Validator::instance();
+		return count($rules) <=0 ? $validator : $validator->validate($data, $rules);
+	}
+}
+
+class AuthController extends BaseController {
+	public function login() {
+		$data = $this->f3->get('POST');
+		
+		$validator = $this->validator($data, array(
+			'email' 	=> 'required|email|unique:Models\User',
+			'password' 	=> 'required|confirmed'
+		));
+		
+		if($validator->passed()) {
+			// Go ahead with your auth code
+		}
+		
+		// Validation errors... go back with `$validator->errors()`
+	}
+}
