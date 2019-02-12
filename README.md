@@ -73,7 +73,7 @@ FOR EX: Validatin on `beforesave` trigger: (This example is used with [ikkez/f3-
             	    if(isset($conf['validate'])) {
                 	    $rules[$field] = $conf['validate'];
                 	    $data[$field] = $this->get($field);
-                	    if(str_contains($conf['validate'], 'confirmed')) {
+                	    if(Validator::instance()->str_contains($conf['validate'], 'confirmed')) {
             	    	   $confirmation = $field.'_confirmation';
                     	   $data[$field.'_confirmation'] = null !== $f3->get('POST.'.$confirmation)?$f3->get('POST.'.$confirmation):$f3->get('GET.'.$confirmation);
                 	    }

@@ -223,4 +223,8 @@ class Validator extends Prefab {
 
         throw new BadMethodCallException("Method [$method] does not exist.");
     }
+	
+	public function str_contains($haystack, $needles) {
+		return $this->contains($haystack, $needles);
+	}
 }
