@@ -46,7 +46,20 @@ Easy to use Validation package for Fatfree-framework with using F3 built-in tran
  *  `min`, `max`, `size`, `between` - `min:6`, `max:255`, `size:3`, `between:1,3`
  *  `unique` - `unique:NAMESPACED_MODEL_CLASS_OR_CONFIG_MODEL`
  *  ...
- 
+
+## USING IN MODEL
+- RECOMMENDED : Validate user input in controllers is the recommended way
+
+### CONTROLLER
+	`$validator = Validator::instance()->validate($f3->get('POST'), array(
+		'field' => 'required|CHECK_PARAM' // EG: 'email' => 'required|email|unique:Models\User'
+	));`
+	
+	`if(!$validator->passed()) {
+		return/flash $validator->errors();
+	}`
+	
+	
 ## USING IN MODEL
 - You can also use this validator directly into your model:
 FOR EX: Validatin on `beforesave` trigger: (This example is used with [ikkez/f3-cortex](https://github.com/ikkez/f3-cortex))
@@ -56,25 +69,25 @@ FOR EX: Validatin on `beforesave` trigger: (This example is used with [ikkez/f3-
 	 public function __construct() {
 	      parent::__construct();
 	      $saveHandler = function() {
-		 foreach($this->getFieldConfiguration() as $field => $conf) {
+		       foreach($this->getFieldConfiguration() as $field => $conf) {
             	    if(isset($conf['validate'])) {
-                	$rules[$field] = $conf['validate'];
-                	$data[$field] = $this->get($field);
-                	if(str_contains($conf['validate'], 'confirmed')) {
+                	    $rules[$field] = $conf['validate'];
+                	    $data[$field] = $this->get($field);
+                	    if(str_contains($conf['validate'], 'confirmed')) {
             	    	   $confirmation = $field.'_confirmation';
                     	   $data[$field.'_confirmation'] = null !== $f3->get('POST.'.$confirmation)?$f3->get('POST.'.$confirmation):$f3->get('GET.'.$confirmation);
-                	}
+                	    }
             	    }
-        	}
-        	$this->validator = Validator::instance()->validate($data, $rules);
-		return $this->validator->passed();
+        	    }
+        	    $this->validator = Validator::instance()->validate($data, $rules);
+		        return $this->validator->passed();
     	   };
 	   $this->beforesave($saveHandler);
 	}`
 
 ### Controller
 	`$model = new MODEL;
-	 $model->copyFrom($f3->get('POST'), $model->fieldConf);
+	 $model->copyFrom($f3->get('POST'), array_keys($model->fieldConf));
 	 $mode->save();
 	 
 	 if($model->validator->passed()) {

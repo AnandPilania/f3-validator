@@ -37,7 +37,7 @@ trait ValidationRules {
 	}
 	
 	public function validateEmail($attribute, $value) {
-		return return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
+		return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
 	}
 	
 	public function validateMax($attribute, $value, $parameters) {
