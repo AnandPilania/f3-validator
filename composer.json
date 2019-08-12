@@ -1,7 +1,7 @@
 {
     "name": "anandpilania/f3-validator",
     "description": "Validator package for FatFreeFramework.",
-	"keywords": ["f3", "fatfree", "fatfreeframework", "anandpilania", "f3-validator"],
+    "keywords": ["f3", "fatfree", "fatfreeframework", "anandpilania", "f3-validator"],
     "license": "MIT",
     "authors": [
         {
@@ -9,12 +9,15 @@
             "email": "pilaniaanand@gmail.com"
         }
     ],
-	"minimum-stability": "stable",
+    "minimum-stability": "stable",
     "require": {
-      "bcosca/fatfree-core": "^3.6"
-	},
-	"autoload": {
+	    "bcosca/fatfree-core": "^3.6"
+    },
+    "autoload": {
         "classmap": ["src/"]
     },
-	"suggest": {}
+    "suggest": {
+	    "anandpilania/f3-jwt-middleware": "JWT Auth Middleware for FatFreeFramework.",
+	    "anandpilania/f3-token-middleware": "Token Auth Middleware for FatFreeFramework."
+    }
 }
