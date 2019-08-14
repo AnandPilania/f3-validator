@@ -2,7 +2,7 @@
 
 Easy to use Validation package for Fatfree-framework with using F3 built-in translations. You can also use it directly in the model.
 
-**NOTE:** This package port some classes and ideas from [illuminate/validator](https://github.com/illuminate/validator).
+**NOTE:** This package port some classes and ideas from [illuminate/validator](https://github.com/illuminate/validator).  
 **NOTE:** SAMPLE DICT/LANG FILE IS INCLUDED AS `en.php.sample`, use this for reference.
 
 ## Usage
@@ -10,18 +10,27 @@ Easy to use Validation package for Fatfree-framework with using F3 built-in tran
 - 1: Initializing, passing data and validate:
 
 	`$validator = new Validator(
+	
 		array('name' => 'Anand Pilania', 'email' => 'abc@def.ge'),
+		
 		array('name' => 'required|min:3|max:60', 'email' => 'required|unique:Models\User|email')
-	)->validate();`
+		
+	)->validate();`  
+	
 	
 	**NOTE:** You can also pass more data to the `validate` method.
+	
 	
 	* Another method:
 		
 		`$validator = Validator::instance()->validate(
+		
 			array('name' => 'Anand Pilania', 'email' => 'abc@def.ge'),
+			
 			array('name' => 'required|min:3|max:60', 'email' => 'required|unique:NAMESPACED_MODEL_CLASS_OR_CONFIG_MODEL.PARAM`|email')
+			
 		);`
+		
 	
 - 2: Get validation status (return -> true/false):
 
