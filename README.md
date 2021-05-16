@@ -1,5 +1,7 @@
 # f3-validator
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FAnandPilania%2Ff3-validator&count_bg=%23FF3863&title_bg=%232C3E50&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 Easy to use Validation package for Fatfree-framework with using F3 built-in translations. You can also use it directly in the model.
 
 **NOTE:** This package port some classes and ideas from [illuminate/validator](https://github.com/illuminate/validator).  
